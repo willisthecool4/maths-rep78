@@ -16,7 +16,6 @@
         .game { background: #6214b3; padding: 8px; text-align: center; border-radius: 10px; cursor: pointer; transition: 0.3s; }
         .game:hover { background: #8524d9; }
         .game img { width: 100%; height: auto; aspect-ratio: 1/1; object-fit: cover; border-radius: 10px; }
-        iframe { margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -35,10 +34,11 @@
     <div class="main">
         <h1>Top Unblocked HTML5 Games Online!</h1>
         <div class="game-container" id="games"></div>
-        <iframe id="appFrame" allowfullscreen="" allow="autoplay; fullscreen; camera; focus-without-user-activation *; monetization; gamepad;
-           keyboard-map *; xr-spatial-tracking; clipboard-write" name="appFrame" scrolling="no" sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock
-              allow-popups allow-popups-to-escape-sandbox allow-presentation allow-scripts allow-same-origin
-              allow-downloads" src="https://g2.igroutka.ru/games/164/WGoNK9PMd0LhDweu/subway_surfers_tokyo/" style="width: 100%; height: 600px; border: none;"></iframe>
+        <div class="game">
+            <a href="#subway_surfers" onclick="openSubwaySurfers()">
+                <img src="assets/subway.jpg" alt="Subway Surfers">
+            </a>
+        </div>
     </div>
     <script>
         const games = [
@@ -63,6 +63,30 @@
             div.innerHTML = `<a href="${game.link}"><img src="assets/${game.img}" alt="${game.name}"></a>`;
             gameContainer.appendChild(div);
         });
+
+        function openSubwaySurfers() {
+            const newWindow = window.open("", "_blank");
+            newWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Subway Surfers</title>
+                    <style>
+                        body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background: #000; }
+                        iframe { width: 100%; height: 100%; border: none; }
+                    </style>
+                </head>
+                <body>
+                    <iframe id="appFrame" allowfullscreen="" allow="autoplay; fullscreen; camera; focus-without-user-activation *; monetization; gamepad;
+                           keyboard-map *; xr-spatial-tracking; clipboard-write" name="appFrame" scrolling="no" sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock
+                          allow-popups allow-popups-to-escape-sandbox allow-presentation allow-scripts allow-same-origin
+                          allow-downloads" src="https://g2.igroutka.ru/games/164/WGoNK9PMd0LhDweu/subway_surfers_tokyo/"></iframe>
+                </body>
+                </html>
+            `);
+        }
     </script>
 </body>
 </html>
